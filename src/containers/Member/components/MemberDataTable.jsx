@@ -1,9 +1,17 @@
-import React,  { useState } from "react";
+import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Card,CardBody,Col, Container, Row ,Button, ButtonToolbar} from "reactstrap";
+import {
+  Card,
+  CardBody,
+  Col,
+  Container,
+  Row,
+  Button,
+  ButtonToolbar,
+} from "reactstrap";
 import ReactTableBase from "@/shared/components/table/ReactTableBase";
-import PropTypes from 'prop-types';
-import PlusIcon from 'mdi-react/PlusIcon';
+import PropTypes from "prop-types";
+import PlusIcon from "mdi-react/PlusIcon";
 
 const reorder = (rows, startIndex, endIndex) => {
   const result = Array.from(rows);
@@ -92,11 +100,21 @@ const MemberDataTable = (reactTableData) => {
             <CardBody>
               <div className="react-table__wrapper">
                 <div className="card__title">
-                    <div className="card-head">
+                 
+                      <div className="card-head">
                         <ButtonToolbar>
-                            <Button className="create" color="primary" onClick={() => { handleCreate() }}><PlusIcon /></Button>
+                          <Button
+                            className="create"
+                            color="primary"
+                            onClick={() => {
+                              handleCreate();
+                            }}
+                          >
+                            <PlusIcon />
+                          </Button>
                         </ButtonToolbar>
-                    </div>
+                      </div>
+                   
                 </div>
               </div>
               <ReactTableBase
@@ -120,15 +138,17 @@ const MemberDataTable = (reactTableData) => {
 };
 
 MemberDataTable.propTypes = {
-    reactTableData: PropTypes.shape({
-      tableHeaderData: PropTypes.arrayOf(PropTypes.shape({
+  reactTableData: PropTypes.shape({
+    tableHeaderData: PropTypes.arrayOf(
+      PropTypes.shape({
         key: PropTypes.string,
         name: PropTypes.string,
-      })),
-      tableRowsData: PropTypes.arrayOf(PropTypes.shape()),
-      defaultTableHeaderData: PropTypes.arrayOf(PropTypes.shape()),
-      defaultTableRowData: PropTypes.arrayOf(PropTypes.shape()),
-    }).isRequired,
-  };
+      })
+    ),
+    tableRowsData: PropTypes.arrayOf(PropTypes.shape()),
+    defaultTableHeaderData: PropTypes.arrayOf(PropTypes.shape()),
+    defaultTableRowData: PropTypes.arrayOf(PropTypes.shape()),
+  }).isRequired,
+};
 
 export default MemberDataTable;

@@ -4,6 +4,8 @@ import { useFlexLayout } from 'react-table';
 import ReactTableConstructor from './components/ReactTableConstructor';
 import ReactTableCell from './components/ReactTableCell';
 import ReactTableCellEditable from './components/ReactTableEditableCell';
+import { useTranslation } from "react-i18next";
+import { t } from 'i18next';
 
 const ReactTableBase = ({
   tableConfig,
@@ -12,6 +14,7 @@ const ReactTableBase = ({
   updateDraggableData,
   updateEditableData,
 }) => {
+  const { t } = useTranslation("common");
   const {
     isEditable,
     isResizable,
@@ -98,7 +101,7 @@ ReactTableBase.defaultProps = {
   },
   columns: [
     { Header: '#', accessor: 'id' },
-    { Header: 'Header Example Title one', accessor: 'first' },
+    { Header: t('full_name'), accessor: 'first' },
     { Header: 'Header Example Title two', accessor: 'last' },
   ],
   data: [
