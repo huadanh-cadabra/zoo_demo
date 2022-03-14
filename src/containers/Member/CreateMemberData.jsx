@@ -1,6 +1,7 @@
 import React, { useMemo } from 'react';
-
+import { useTranslation } from 'react-i18next';
 const CreateMemberData = () => {
+  const { t } = useTranslation('common');
   const columns = useMemo(
     () => [
       {
@@ -11,47 +12,35 @@ const CreateMemberData = () => {
         width: 65,
       },
       {
-        Header: 'First name',
-        accessor: 'first',
+        Header: t('first_name'),
+        accessor: 'first_name',
       },
       {
-        Header: 'Last name',
-        accessor: 'last',
+        Header: t('last_name'),
+        accessor: 'last_name',
         disableGlobalFilter: true,
       },
       {
-        Header: 'Username',
-        accessor: 'user',
+        Header: t('email'),
+        accessor: 'email',
         disableGlobalFilter: true,
       },
       {
-        Header: 'Age',
-        accessor: 'age',
-        disableGlobalFilter: true,
-        Footer: (info) => {
-          const totalAge = useMemo(
-            () => info.rows.reduce((sum, row) => Number(row.values.age) + sum, 0),
-            [info.rows],
-          );
-          const age = Math.round(totalAge / info.flatRows.length);
-          return <span>{age}</span>;
-        },
-      },
-      {
-        Header: 'Date',
-        accessor: 'date',
+        Header: t('username'),
+        accessor: 'username',
         disableGlobalFilter: true,
       },
       {
-        Header: 'Location',
-        accessor: 'location',
+        Header: t('action'),
+        accessor: 'action',
         disableGlobalFilter: true,
-      },
-      {
-        Header: 'Work',
-        accessor: 'work',
-        disableGlobalFilter: true,
-        disableSortBy: true,
+        controller: "Action",
+        buttons: [
+          {
+            title: 'update',
+            color: 'warning'
+          }
+        ]
       },
     ],
     [],
@@ -65,13 +54,11 @@ const CreateMemberData = () => {
     for (let i = 1; i < 36; i += 1) {
       data.push({
         id: i,
-        first: ['Maria', 'Bobby  ', 'Alexander'][Math.floor((Math.random() * 3))],
-        last: ['Morrison', 'Brown  ', 'Medinberg'][Math.floor((Math.random() * 3))],
-        user: ['@dragon', '@hamster', '@cat'][Math.floor((Math.random() * 3))],
-        age: Math.min(100, Math.round(Math.random() * 30) + 20),
-        date: getRandomDate(new Date(2002, 3, 1), new Date(1954, 3, 1)),
-        location: ['Melbourne', 'Tokio', 'Moscow', 'Rome'][Math.floor((Math.random() * 4))],
-        work: ['Nova Soft', 'Dog Shop', 'Aspirity', 'Business Bro', 'Starlight'][Math.floor((Math.random() * 5))],
+        first_name: ['ユーザ 名', 'ユーザ 名', 'ユーザ 名'][Math.floor((Math.random() * 3))],
+        last_name: ['ユーザ 名 1', 'Brユーザ 名 2', 'ユーザ 名 3'][Math.floor((Math.random() * 3))],
+        email: [`user${i}1@race.jp`, `user${i}2@race.jp`, `user${i}3@race.jp`][Math.floor((Math.random() * 3))],
+        username: ['1GX1xsd4Vg1CdcpaDag', '1sadsd4Vg1CdcpaDag', '1FhgfCdsewCdcpaDag'][Math.floor((Math.random() * 3))],
+        action:''
       });
     }
   };

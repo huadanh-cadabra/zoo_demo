@@ -2,6 +2,7 @@
     "les": "Ladder Evaluation System",
     "username": "ユーザー名",
     "password": "パスワード",
+    "email": "Eメール",
     "remember me": "ログイン状態を保持する",
     "forgot a password":"パスワードを忘れましたか？",
     "login": "ログイン",
