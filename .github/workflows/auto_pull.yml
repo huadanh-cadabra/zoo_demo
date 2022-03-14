@@ -1,0 +1,29 @@
+name: CI/CD
+
+on:
+  push:
+    branches: [testing]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: executing remote ssh commands
+      uses: appleboy/ssh-action@master
+      
+      with:
+        host: ${{ secrets.SERVER }}
+        username: ${{ secrets.USERNAME }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        port: 22
+        script: |
+          cd /opt/www/zooapi/zoo_demo/
+          git checkout master
+          git branch -d testing
+          git checkout testing 
+          git pull
+          git reset --hard ${{github.sha}}
+          npm i --force
+          npm start
