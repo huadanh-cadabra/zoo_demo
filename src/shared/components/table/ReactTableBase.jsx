@@ -5,7 +5,6 @@ import ReactTableConstructor from './components/ReactTableConstructor';
 import ReactTableCell from './components/ReactTableCell';
 import ReactTableCellEditable from './components/ReactTableEditableCell';
 import { useTranslation } from "react-i18next";
-import { t } from 'i18next';
 
 const ReactTableBase = ({
   tableConfig,
@@ -14,6 +13,7 @@ const ReactTableBase = ({
   updateDraggableData,
   updateEditableData,
 }) => {
+  console.log(columns);
   const { t } = useTranslation("common");
   const {
     isEditable,
@@ -46,7 +46,7 @@ const ReactTableBase = ({
       globalFilter: withSearchEngine && filterValue ? filterValue : undefined,
     },
   };
-
+  
   let tableOptionalHook = [];
   if (isResizable) tableOptionalHook = [useFlexLayout];
   if (withSearchEngine) {
@@ -59,7 +59,7 @@ const ReactTableBase = ({
       Cell: ReactTableCellEditable,
     };
   }
-
+  console.log(columns);
   return (
     <ReactTableConstructor
       key={isResizable || isEditable ? 'modified' : 'common'}
@@ -100,13 +100,8 @@ ReactTableBase.defaultProps = {
     manualPageSize: [],
   },
   columns: [
-    { Header: '#', accessor: 'id' },
-    { Header: t('full_name'), accessor: 'first' },
-    { Header: 'Header Example Title two', accessor: 'last' },
   ],
   data: [
-    { id: 1, first: 'Cell Example Data one', last: 'Cell Example Data two' },
-    { id: 2, first: 'Cell Example Data three', last: 'Cell Example Data four' },
   ],
   updateDraggableData: () => {},
   updateEditableData: () => {},

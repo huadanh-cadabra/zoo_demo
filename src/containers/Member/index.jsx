@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import CreateMemberData from './CreateMemberData';
 const Member = () => {
   const { t } = useTranslation('common');
+  const createMemberData = CreateMemberData();
   return(
     <Container className="dashboard">
       <Row>
@@ -13,7 +14,7 @@ const Member = () => {
         </Col>
       </Row>
       <Row>
-        <MemberDataTable reactTableData={CreateMemberData}/>
+        <MemberDataTable createMemberData={createMemberData}/>
       </Row>
     </Container>
   )

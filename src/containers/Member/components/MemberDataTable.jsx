@@ -21,8 +21,8 @@ const reorder = (rows, startIndex, endIndex) => {
   return result;
 };
 
-const MemberDataTable = (reactTableData) => {
-  const [rows, setData] = useState(reactTableData.tableRowsData);
+const MemberDataTable = (createMemberData) => {
+  const [rows, setData] = useState(createMemberData.createMemberData.tableRowsData);
   const [isEditable, setIsEditable] = useState(false);
   const [isResizable, setIsResizable] = useState(false);
   const [isSortable, setIsSortable] = useState(false);
@@ -89,6 +89,8 @@ const MemberDataTable = (reactTableData) => {
     manualPageSize: [10, 20, 30, 40],
     placeholder: t("search by zoom account"),
   };
+
+  console.log(createMemberData.createMemberData.tableRowsData);
   return (
     <Container>
       <Row>
@@ -123,7 +125,7 @@ const MemberDataTable = (reactTableData) => {
                     ? "modified"
                     : "common"
                 }
-                columns={reactTableData.tableHeaderData}
+                columns={createMemberData.createMemberData.tableHeaderData}
                 data={rows}
                 updateEditableData={updateEditableData}
                 updateDraggableData={updateDraggableData}
@@ -138,7 +140,7 @@ const MemberDataTable = (reactTableData) => {
 };
 
 MemberDataTable.propTypes = {
-  reactTableData: PropTypes.shape({
+  createMemberData: PropTypes.shape({
     tableHeaderData: PropTypes.arrayOf(
       PropTypes.shape({
         key: PropTypes.string,

@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 
-const CreateTableData = () => {
+const CreateMemberData = () => {
   const columns = useMemo(
     () => [
       {
@@ -77,8 +77,8 @@ const CreateTableData = () => {
   };
 
   rows();
-  const reactTableData = { tableHeaderData: columns, tableRowsData: data };
-  return reactTableData;
+  const createData = { tableHeaderData: columns, tableRowsData: data };
+  return createData;
 };
 
-export default CreateTableData;
+export default CreateMemberData;

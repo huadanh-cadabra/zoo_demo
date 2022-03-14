@@ -41,7 +41,7 @@ const ReactTableFilter = ({
       >
         <FaEraser />
       </Button>
-      {dataLength !== rows.length && <span>Found {rows.length} matches</span>}
+      
     </div>
   );
 };
