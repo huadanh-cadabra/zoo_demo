@@ -34,11 +34,20 @@ const CreateMemberData = () => {
         Header: t('action'),
         accessor: 'action',
         disableGlobalFilter: true,
+        isResizing: true,
         controller: "Action",
         buttons: [
           {
+            title: 'active',
+            color: 'secondary'
+          },
+          {
             title: 'update',
             color: 'warning'
+          },
+          {
+            title: 'delete',
+            color: 'danger'
           }
         ]
       },

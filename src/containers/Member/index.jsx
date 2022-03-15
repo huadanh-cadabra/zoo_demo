@@ -1,6 +1,6 @@
 import React from 'react';
 import { Col, Container, Row } from 'reactstrap';
-import MemberDataTable from './components/MemberDataTable';
+import MemberTable from './components/MemberTable';
 import { useTranslation } from 'react-i18next';
 import CreateMemberData from './CreateMemberData';
 const Member = () => {
@@ -14,7 +14,7 @@ const Member = () => {
         </Col>
       </Row>
       <Row>
-        <MemberDataTable createMemberData={createMemberData}/>
+        <MemberTable createMemberData={createMemberData}/>
       </Row>
     </Container>
   )

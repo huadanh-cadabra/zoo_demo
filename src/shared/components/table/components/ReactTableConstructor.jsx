@@ -69,7 +69,7 @@ const ReactTableConstructor = ({
       <div className={withPagination ? 'table react-table' : 'table react-table table--not-pagination'}>
         <table
           {...getTableProps()}
-          className={isEditable ? 'react-table editable-table table-bordered table table-striped' : 'react-table resizable-table table-bordered table table-striped'}
+          className={isEditable ? 'react-table editable-table table-bordered table table-striped' : 'react-table table-bordered table table-striped resizable-table'}
         >
           <ReactTableHeader
             headerGroups={headerGroups}

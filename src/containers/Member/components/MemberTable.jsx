@@ -12,6 +12,8 @@ import {
 import ReactTableBase from "@/shared/components/table/ReactTableBase";
 import PropTypes from "prop-types";
 import PlusIcon from "mdi-react/PlusIcon";
+import ModalComponent from "@/shared/components/Modal";
+import MemberForm from "./MemberForm";
 
 const reorder = (rows, startIndex, endIndex) => {
   const result = Array.from(rows);
@@ -21,48 +23,38 @@ const reorder = (rows, startIndex, endIndex) => {
   return result;
 };
 
-const MemberDataTable = (createMemberData) => {
-  const [rows, setData] = useState(createMemberData.createMemberData.tableRowsData);
+const MemberTable = (createMemberData) => {
+  const [rows, setData] = useState(
+    createMemberData.createMemberData.tableRowsData
+  );
   const [isEditable, setIsEditable] = useState(false);
   const [isResizable, setIsResizable] = useState(false);
   const [isSortable, setIsSortable] = useState(false);
-  const [isDisabledDragAndDrop, setIsDisabledDragAndDrop] = useState(false);
-  const [isDisabledEditable, setIsDisabledEditable] = useState(false);
-  const [isDisabledResizable, setIsDisabledResizable] = useState(false);
   const [withDragAndDrop, setWithDragAndDrop] = useState(false);
-  const [withPagination, setWithPaginationTable] = useState(false);
   const [withSearchEngine, setWithSearchEngine] = useState(true);
+  const [openModal, setOpenModal] = useState(false);
   const { t } = useTranslation("common");
-  const handleClickIsEditable = () => {
-    if (!withDragAndDrop) setIsDisabledResizable(!isDisabledResizable);
-    setIsResizable(false);
-    setIsEditable(!isEditable);
-  };
-  const handleClickIsResizable = () => {
-    setIsEditable(false);
-    setWithDragAndDrop(false);
-    setIsDisabledDragAndDrop(!isDisabledDragAndDrop);
-    setIsDisabledEditable(!isDisabledEditable);
-    setIsResizable(!isResizable);
-  };
-  const handleClickIsSortable = () => {
-    setIsSortable(!isSortable);
-  };
-  const handleClickWithDragAndDrop = () => {
-    if (!isEditable) setIsDisabledResizable(!isDisabledResizable);
-    setIsResizable(false);
-    setWithDragAndDrop(!withDragAndDrop);
-  };
-  const handleClickWithPagination = () => {
-    setWithPaginationTable(!withPagination);
-  };
-  const handleClickWithSearchEngine = () => {
-    setWithSearchEngine(!withSearchEngine);
-  };
+  const [actionModel, setActionModel] = useState("insert");
+  const [model, setModel] = useState(null);
 
   const updateDraggableData = (result) => {
     const items = reorder(rows, result.source.index, result.destination.index);
     setData(items);
+  };
+
+  const createData = () => {
+    setActionModel("create");
+    setModel(null);
+    setOpenModal(true);
+  };
+
+  const closeModal = () => {
+    setActionModel("create");
+    setModel(null);
+    setOpenModal(false);
+  };
+  const handleCreate = () => {
+    createData();
   };
 
   const updateEditableData = (rowIndex, columnId, value) => {
@@ -102,21 +94,19 @@ const MemberDataTable = (createMemberData) => {
             <CardBody>
               <div className="react-table__wrapper">
                 <div className="card__title">
-                 
-                      <div className="card-head">
-                        <ButtonToolbar>
-                          <Button
-                            className="create"
-                            color="primary"
-                            onClick={() => {
-                              handleCreate();
-                            }}
-                          >
-                            <PlusIcon />
-                          </Button>
-                        </ButtonToolbar>
-                      </div>
-                   
+                  <div className="card-head">
+                    <ButtonToolbar>
+                      <Button
+                        className="create"
+                        color="primary"
+                        onClick={() => {
+                          handleCreate();
+                        }}
+                      >
+                        <PlusIcon />
+                      </Button>
+                    </ButtonToolbar>
+                  </div>
                 </div>
               </div>
               <ReactTableBase
@@ -130,16 +120,25 @@ const MemberDataTable = (createMemberData) => {
                 updateEditableData={updateEditableData}
                 updateDraggableData={updateDraggableData}
                 tableConfig={tableConfig}
+                createData={createData}
               />
             </CardBody>
           </Card>
         </Col>
       </Row>
+      <ModalComponent
+        isOpen={openModal}
+        closeModal={closeModal}
+        title="member_registration"
+        form={<MemberForm action={actionModel} />}
+        isFooter={false}
+        model={model}
+      />
     </Container>
   );
 };
 
-MemberDataTable.propTypes = {
+MemberTable.propTypes = {
   createMemberData: PropTypes.shape({
     tableHeaderData: PropTypes.arrayOf(
       PropTypes.shape({
@@ -153,4 +152,4 @@ MemberDataTable.propTypes = {
   }).isRequired,
 };
 
-export default MemberDataTable;
+export default MemberTable;

@@ -189,5 +189,6 @@
     "import_evaluation_ok": "評価情報インポートが完了しました",
     "import_evaluation_fail": "ファイルインポートエラーが発生しました。エラーファイルのCI列を確認してください。",
     "import_evaluation_fail_name_file": " 指定ファイル名と選択評価期は会っていません。正しいファイルを指定してください。",
-    "search by zoom account":"ズームアカウントで検索"
+    "search by zoom account":"ズームアカウントで検索",
+    "active": "アクティブ"
 }
