@@ -22,6 +22,7 @@ const ReactTableConstructor = ({
     placeholder,
   } = tableConfig;
   const {
+    showActionForm,
     getTableProps,
     getTableBodyProps,
     headerGroups,
@@ -84,6 +85,7 @@ const ReactTableConstructor = ({
             updateEditableData={updateEditableData}
             isEditable={isEditable}
             withDragAndDrop={withDragAndDrop}
+            showActionForm={showActionForm}
           />
          
         </table>
@@ -138,6 +140,7 @@ ReactTableConstructor.propTypes = {
     isEditable: PropTypes.bool,
     withDragAndDrop: PropTypes.bool,
     dataLength: PropTypes.number,
+    showActionForm: PropTypes.func,
   }),
   tableOptionalHook: PropTypes.arrayOf(PropTypes.func).isRequired,
 };
@@ -159,6 +162,7 @@ ReactTableConstructor.defaultProps = {
     setFilterValue: () => {},
     updateDraggableData: () => {},
     updateEditableData: () => {},
+    showActionForm: () => { },
     defaultColumn: [],
     withDragAndDrop: false,
     dataLength: null,

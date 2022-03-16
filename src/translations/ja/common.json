@@ -190,5 +190,7 @@
     "import_evaluation_fail": "ファイルインポートエラーが発生しました。エラーファイルのCI列を確認してください。",
     "import_evaluation_fail_name_file": " 指定ファイル名と選択評価期は会っていません。正しいファイルを指定してください。",
     "search by zoom account":"ズームアカウントで検索",
-    "active": "アクティブ"
+    "active": "アクティブ",
+    "this is required field":"これは必須フィールドです",
+    "entered value does not match email format":"入力した値がメール形式と一致しません"
 }

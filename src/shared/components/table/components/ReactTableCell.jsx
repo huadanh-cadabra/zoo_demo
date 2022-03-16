@@ -2,8 +2,17 @@ import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 import { Button, ButtonToolbar } from "reactstrap";
 import { useTranslation } from "react-i18next";
-const ReactTableCell = ({ value: initialValue, state, column }) => {
+const ReactTableCell = ({ 
+  value: initialValue, 
+  state, 
+  column,
+  row: { index, values },
+  showActionForm
+}) => {
   const { t } = useTranslation("common");
+  const handleButtonClick = (action) => {
+    showActionForm(action, values);
+  };
   return (
     <Fragment>
       <Fragment>
@@ -41,6 +50,9 @@ ReactTableCell.propTypes = {
     globalFilter: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   }).isRequired,
   column: PropTypes.shape().isRequired,
+  row: PropTypes.shape({
+    index: PropTypes.number,
+  }).isRequired,
 };
 
 export default ReactTableCell;

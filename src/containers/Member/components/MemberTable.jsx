@@ -37,11 +37,6 @@ const MemberTable = (createMemberData) => {
   const [actionModel, setActionModel] = useState("insert");
   const [model, setModel] = useState(null);
 
-  const updateDraggableData = (result) => {
-    const items = reorder(rows, result.source.index, result.destination.index);
-    setData(items);
-  };
-
   const createData = () => {
     setActionModel("create");
     setModel(null);
@@ -57,19 +52,18 @@ const MemberTable = (createMemberData) => {
     createData();
   };
 
-  const updateEditableData = (rowIndex, columnId, value) => {
-    setData((old) =>
-      old.map((item, index) => {
-        if (index === rowIndex) {
-          return {
-            ...old[rowIndex],
-            [columnId]: value,
-          };
-        }
-        return item;
-      })
-    );
+  const handleSubmit = () => {
+  
   };
+  const showActionForm = async (action, object) => {
+    setModel(object);
+    setActionModel(action);
+    if (action == 'update') {
+        setOpenModal(true);
+    }
+  };
+
+  
 
   const tableConfig = {
     isEditable,
@@ -82,7 +76,6 @@ const MemberTable = (createMemberData) => {
     placeholder: t("search by zoom account"),
   };
 
-  console.log(createMemberData.createMemberData.tableRowsData);
   return (
     <Container>
       <Row>
@@ -117,10 +110,10 @@ const MemberTable = (createMemberData) => {
                 }
                 columns={createMemberData.createMemberData.tableHeaderData}
                 data={rows}
-                updateEditableData={updateEditableData}
-                updateDraggableData={updateDraggableData}
+               
                 tableConfig={tableConfig}
                 createData={createData}
+                showActionForm={showActionForm}
               />
             </CardBody>
           </Card>
@@ -130,9 +123,14 @@ const MemberTable = (createMemberData) => {
         isOpen={openModal}
         closeModal={closeModal}
         title="member_registration"
-        form={<MemberForm action={actionModel} />}
+        form={<MemberForm 
+          action={actionModel} 
+          model={model}
+          handleSubmit={handleSubmit}
+        />}
         isFooter={false}
         model={model}
+        
       />
     </Container>
   );

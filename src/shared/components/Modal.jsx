@@ -32,7 +32,7 @@ const ModalComponent = ({
       <Modal
         isOpen={isOpen}
         toggle={closeModal}
-        className={`theme-light ltr-support login-modal-form modal--${color}`}
+        className={`theme-light ltr-support modal-lg login-modal-form modal--${color}`}
       >
         <div className="modal__header">
           <button

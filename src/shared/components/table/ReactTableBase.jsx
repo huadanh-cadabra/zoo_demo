@@ -12,8 +12,8 @@ const ReactTableBase = ({
   data,
   updateDraggableData,
   updateEditableData,
+  showActionForm
 }) => {
-  console.log(columns);
   const { t } = useTranslation("common");
   const {
     isEditable,
@@ -30,6 +30,7 @@ const ReactTableBase = ({
     data,
     updateDraggableData,
     updateEditableData,
+    showActionForm,
     setFilterValue,
     defaultColumn: {},
     isEditable,
@@ -59,7 +60,7 @@ const ReactTableBase = ({
       Cell: ReactTableCellEditable,
     };
   }
-  console.log(columns);
+
   return (
     <ReactTableConstructor
       key={isResizable || isEditable ? 'modified' : 'common'}
@@ -98,6 +99,7 @@ ReactTableBase.defaultProps = {
     withPagination: false,
     withSearchEngine: false,
     manualPageSize: [],
+    showActionForm:PropTypes.func,
   },
   columns: [
   ],
@@ -105,6 +107,7 @@ ReactTableBase.defaultProps = {
   ],
   updateDraggableData: () => {},
   updateEditableData: () => {},
+  showActionForm: () => { },
 };
 
 export default ReactTableBase;
