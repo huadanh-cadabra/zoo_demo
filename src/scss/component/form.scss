@@ -112,7 +112,7 @@
       }
     }
   }
-
+  
   &.form--preview {
     display: flex;
 
@@ -301,10 +301,14 @@
   margin: auto;
 }
 
+.form .form__label-required {
+  color: #ad4444;
+}
+
 .form__form-group-label {
   margin-bottom: 4px;
   display: inline-block;
-
+  text-align: left;
   @include themify($themes) {
     color: themed('colorText');
   }
