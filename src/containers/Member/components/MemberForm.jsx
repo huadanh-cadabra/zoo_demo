@@ -25,7 +25,7 @@ const MemberForm = ({ model, action, isAboveError, isHorizontal }) => {
         username: model ? model.username : "",
       }
     });
-
+  
   const showPassword = () => {
     setIsPasswordShown((prevState) => !prevState);
   };
@@ -104,6 +104,7 @@ const MemberForm = ({ model, action, isAboveError, isHorizontal }) => {
                   errors={errors}
                   rules={{ required: t("this is required field") }}
                   isAboveError={isAboveError}
+                  disabled
                 />
               </div>
             </div>
