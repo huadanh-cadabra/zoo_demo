@@ -192,5 +192,8 @@
     "search by zoom account":"ズームアカウントで検索",
     "active": "アクティブ",
     "this is required field":"これは必須フィールドです",
-    "entered value does not match email format":"入力した値がメール形式と一致しません"
+    "entered value does not match email format":"入力した値がメール形式と一致しません",
+    "meeting": "ミーティング",
+    "meeting list":"ミーティングリスト"
+
 }

@@ -4,10 +4,11 @@ import Layout from '../Layout/index';
 import MainWrapper from './MainWrapper';
 import LogIn from '../LogIn/index';
 import Member from '../Member';
-
+import Meeting from '../Meeting';
 const Pages = () => (
   <Switch>
     <Route path="/members" component={Member} />
+    <Route path="/meetings" component={Meeting} />
   </Switch>
 );
 
