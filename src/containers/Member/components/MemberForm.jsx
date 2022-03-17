@@ -102,7 +102,6 @@ const MemberForm = ({ model, action, isAboveError, isHorizontal }) => {
                   control={control}
                   component="input"
                   errors={errors}
-                  rules={{ required: t("this is required field") }}
                   isAboveError={isAboveError}
                   disabled
                 />
