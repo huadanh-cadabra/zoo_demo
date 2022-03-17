@@ -11,7 +11,7 @@ const formats = {
   dayFormat: (date, culture) => localizer.format(date, 'DD', culture),
 };
 
-const CalendarComponent = ({ small, events: propEvents }) => {
+const CalendarComponent = ({ small, events: propEvents, showDetailEvent }) => {
   const [events, setEvents] = useState(propEvents);
 
   const moveEvent = ({ event, start, end }) => {
@@ -23,7 +23,9 @@ const CalendarComponent = ({ small, events: propEvents }) => {
 
     setEvents(nextEvents);
   };
-
+  const showEvent = (event) =>{
+    showDetailEvent(event);
+  }
   const eventStyleGetter = (event) => {
     let color;
 
@@ -57,7 +59,6 @@ const CalendarComponent = ({ small, events: propEvents }) => {
   return (
     <div className={`calendar${small ? ' calendar--small' : ''}`}>
       <DragAndDropCalendar
-        culture='ja'
         localizer={localizer}
         events={events}
         views={['month', 'week', 'day']}
@@ -67,6 +68,7 @@ const CalendarComponent = ({ small, events: propEvents }) => {
         timeslots={1}
         showMultiDayTimes
         onEventDrop={moveEvent}
+        onSelectEvent={showEvent}
         defaultDate={new Date(moment().format('MMMM DD YY'))}
         eventPropGetter={eventStyleGetter}
         messages={{
@@ -89,6 +91,7 @@ CalendarComponent.propTypes = {
     priority: PropTypes.string,
   })).isRequired,
   small: PropTypes.bool,
+  showDetailEvent: PropTypes.func
 
 };
 

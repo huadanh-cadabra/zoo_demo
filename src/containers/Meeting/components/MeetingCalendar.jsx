@@ -14,8 +14,8 @@ import PropTypes from "prop-types";
 import PlusIcon from "mdi-react/PlusIcon";
 import ModalComponent from "@/shared/components/Modal";
 import MeetingForm from "./MeetingForm";
-import Calendar from '@/shared/components/Calendar';
-import events from './events';
+import Calendar from "@/shared/components/Calendar";
+import events from "./events";
 
 const reorder = (rows, startIndex, endIndex) => {
   const result = Array.from(rows);
@@ -54,18 +54,11 @@ const MeetingCalendar = (createMeetingData) => {
     createData();
   };
 
-  const handleSubmit = () => {
-  
+  const handleSubmit = () => {};
+  const showDetailEvent = async (event) => {
+    setModel(event);
+    setOpenModal(true);
   };
-  const showActionForm = async (action, object) => {
-    setModel(object);
-    setActionModel(action);
-    if (action == 'update') {
-        setOpenModal(true);
-    }
-  };
-
-  
 
   const tableConfig = {
     isEditable,
@@ -80,12 +73,26 @@ const MeetingCalendar = (createMeetingData) => {
 
   return (
     <Col md={12} lg={12} xl={9}>
-    <Card>
-      <CardBody>
-        <Calendar events={events} />
-      </CardBody>
-    </Card>
-  </Col>
+      <Card>
+        <CardBody>
+          <Calendar events={events} showDetailEvent={showDetailEvent} />
+        </CardBody>
+      </Card>
+      <ModalComponent
+        isOpen={openModal}
+        closeModal={closeModal}
+        title="meeting_update"
+        form={<MeetingForm 
+          action={actionModel} 
+          model={model}
+          handleSubmit={handleSubmit}
+        />}
+        isFooter={false}
+        model={model}
+        
+      />
+    </Col>
+
   );
 };
 
