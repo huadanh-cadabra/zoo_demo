@@ -17,15 +17,8 @@ const PermissionForm = ({
   const [message, setMessage] = useState(null);
   const [loading, setLoading] = useState(false);
   const [isPasswordShown, setIsPasswordShown] = useState(false);
-
-  const { handleSubmit, reset, control, register, errors } = useForm({
-    defaultValues: {
-      first_name: model ? model.first_name : "",
-      last_name: model ? model.last_name : "",
-      email: model ? model.email : "",
-      username: model ? model.username : "",
-    },
-  });
+  const [permissionChecked, setPermissionChecked] = useState([]);
+  const { handleSubmit, reset, control, register, errors, setValue,getValues  } = useForm();
 
   const showPassword = () => {
     setIsPasswordShown((prevState) => !prevState);
@@ -33,6 +26,11 @@ const PermissionForm = ({
 
   const onSubmit = (data) => showResults(data);
   console.log(model);
+
+  const handleAllCheck = (event) => {
+    let target = event.target;
+  }
+
   return (
     <Col md={12} lg={12} xl={12}>
       <Card>
@@ -63,8 +61,11 @@ const PermissionForm = ({
                         className="checkbox-btn__checkbox"
                         type="checkbox"
                         name={module.id+permission.action}
+                        {...register(module.id+permission.action)}
                         id={module.id+permission.action}
                         defaultChecked={permission.checked === 1}
+                        onChange={(e)=>handleAllCheck(e)}
+                        
                       />
                       <span className="checkbox-btn__checkbox-custom">
                         <CheckIcon />

@@ -6,6 +6,7 @@ import LogIn from '../LogIn/index';
 import Member from '../Member';
 import Meeting from '../Meeting';
 import Role from '../Role';
+import Forgot from '../Forgot';
 const Pages = () => (
   <Switch>
     <Route path="/members" component={Member} />
@@ -28,7 +29,8 @@ const Router = () => (
     <main>
       <Switch>
         <Route exact path="/" component={LogIn} />
-        <Route exact path="/log_in" component={LogIn} />
+        <Route exact path="/log-in" component={LogIn} />
+        <Route exact path="/forgot" component={Forgot} />
         <Route path="/" component={wrappedRoutes} />
       </Switch>
     </main>

@@ -51,7 +51,7 @@ const LogInForm = ({ handleSubmit }) => {
           </button>
         </div>
         <div className="account__forgot-password">
-          <a href="/">{t('forgot a password')}</a>
+          <a href="/forgot">{t('forgot a password')}</a>
         </div>
       </div>
       <div className="form__form-group">
