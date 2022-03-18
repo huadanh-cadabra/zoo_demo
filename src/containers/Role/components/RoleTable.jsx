@@ -71,7 +71,7 @@ const RoleTable = (createRoleData) => {
     withPagination: true,
     withSearchEngine,
     manualPageSize: [10, 20, 30, 40],
-    placeholder: t("search by zoom account"),
+    placeholder: t("search by role name"),
   };
 
   return (

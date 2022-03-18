@@ -81,7 +81,7 @@ const PermissionForm = ({
 
             <ButtonToolbar className="form__button-toolbar">
               <Button color="primary" type="submit">
-                {t("submit")}
+                {t("update")}
               </Button>
               <Button type="button" onClick={reset}>
                 {t("cancel")}
