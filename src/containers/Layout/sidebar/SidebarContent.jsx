@@ -18,6 +18,10 @@ const SidebarContent = ({ onClick }) => {
         <SidebarCategory title={t('meeting')} icon="calendar-full">
           <SidebarLink title={t('meeting list')} route="/meetings" onClick={handleHideSidebar} />
         </SidebarCategory>
+
+        <SidebarCategory title={t('setting')} icon="cog">
+          <SidebarLink title={t('role list')} route="/roles" onClick={handleHideSidebar} />
+        </SidebarCategory>
       </ul>
     </div>
   );

@@ -25,6 +25,19 @@ const ReactTableBase = ({
     manualPageSize,
   } = tableConfig;
   const [filterValue, setFilterValue] = useState(null);
+  const hiddenColumns = [];
+  columns.map(column =>{
+    if (column.show === false) {
+      hiddenColumns.push(column.accessor || column.id)
+
+    }
+    column.columns?.map(children => {
+      if (children.show === false) {
+        hiddenColumns.push(children.accessor || children.id)
+  
+      }
+    })
+  })
   const tableOptions = {
     columns,
     data,
@@ -45,6 +58,7 @@ const ReactTableBase = ({
       pageIndex: 0,
       pageSize: manualPageSize ? manualPageSize[0] : 10,
       globalFilter: withSearchEngine && filterValue ? filterValue : undefined,
+      hiddenColumns: hiddenColumns
     },
   };
   
@@ -67,6 +81,7 @@ const ReactTableBase = ({
       tableConfig={tableConfig}
       tableOptions={tableOptions}
       tableOptionalHook={tableOptionalHook}
+      
     />
   );
 };

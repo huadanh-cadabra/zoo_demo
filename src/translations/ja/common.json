@@ -227,7 +227,7 @@
     "audio":"",
     "authentication_domains":"",
     "authentication_exception":"",
-    "name":"",
+    "name":"名前",
     "authentication_name":"",
     "authentication_option":"",
     "auto_recording":"",
@@ -275,6 +275,7 @@
     "topic":"",
     "tracking_fields":"Tracking Fields",
     "field":"",
-    "general":"General"
-
+    "general":"General",
+    "role list":"役割リスト",
+    "update permission":"更新許可"
 }
