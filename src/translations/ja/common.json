@@ -281,5 +281,6 @@
     "update permission":"更新許可",
     "module":"モジュール",
     "view":"見る",
-    "search by role name":"ロール名で検索"
+    "search by role name":"ロール名で検索",
+    "create member success":"メンバーの成功を生み出す"
 }

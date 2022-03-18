@@ -1,12 +1,10 @@
 .notification {
   max-width: 400px;
-  width: calc(100% - 50px);
   box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.07);
   padding: 20px 40px 30px 25px;
   background: $color-white;
   position: relative;
-  margin: 10px 25px;
-
+ 
   &.notification--image {
     height: 106px;
     overflow: hidden;
@@ -66,9 +64,13 @@
     }
   }
 }
+.rc-notification-notice {
+  padding:0 !important;
+  box-shadow: none !important;
+}
 
 .rc-notification-notice-close-x {
-  color: $color-additional;
+  color: $color-white;
 }
 
 .notification__message {

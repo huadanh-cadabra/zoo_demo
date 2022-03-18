@@ -14,6 +14,7 @@ import PropTypes from "prop-types";
 import PlusIcon from "mdi-react/PlusIcon";
 import ModalComponent from "@/shared/components/Modal";
 import MemberForm from "./MemberForm";
+import { showNotification } from '@/shared/components/Notification';
 
 const reorder = (rows, startIndex, endIndex) => {
   const result = Array.from(rows);
@@ -52,8 +53,9 @@ const MemberTable = (createMemberData) => {
     createData();
   };
 
-  const handleSubmit = () => {
-  
+  const handleSuccess = (data) => {
+    setOpenModal(false);
+    showNotification(t('create member success'), null, 'success');
   };
   const showActionForm = async (action, object) => {
     setModel(object);
@@ -126,7 +128,7 @@ const MemberTable = (createMemberData) => {
         form={<MemberForm 
           action={actionModel} 
           model={model}
-          handleSubmit={handleSubmit}
+          handleSuccess={handleSuccess}
         />}
         isFooter={false}
         model={model}

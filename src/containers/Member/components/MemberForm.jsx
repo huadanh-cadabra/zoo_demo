@@ -8,13 +8,11 @@ import { emailPatter, urlPattern } from "@/shared/helpers";
 import showResults from "@/shared/helpers/Show";
 import { FormField } from "@/shared/components/form/FormField";
 import { useTranslation } from "react-i18next";
+import Loading from '@/shared/components/Loading';
 
-const MemberForm = ({ model, action, isAboveError, isHorizontal }) => {
+const MemberForm = ({ model, action, isAboveError, isHorizontal,handleSuccess }) => {
   const { t } = useTranslation("common");
-  const [message, setMessage] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [isPasswordShown, setIsPasswordShown] = useState(false);
-  
 
   const { handleSubmit, reset, control, register, errors } =
     useForm({
@@ -30,8 +28,15 @@ const MemberForm = ({ model, action, isAboveError, isHorizontal }) => {
     setIsPasswordShown((prevState) => !prevState);
   };
 
-  const onSubmit = (data) => showResults(data);
-
+  const onSubmit = (data) => {
+    setLoading(true);
+    setLoading(false);
+    handleSuccess(data)
+    
+  };
+  if (loading) {
+    return (<Loading loading={loading} />);
+  }
   return (
     <Col md={12} lg={12} xl={12}>
       <Card>
@@ -126,6 +131,7 @@ const MemberForm = ({ model, action, isAboveError, isHorizontal }) => {
 MemberForm.propTypes = {
   isHorizontal: PropTypes.bool,
   isAboveError: PropTypes.bool,
+  handleSuccess: PropTypes.func,
 };
 
 MemberForm.defaultProps = {
