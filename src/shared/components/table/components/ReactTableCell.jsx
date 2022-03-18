@@ -12,7 +12,6 @@ const ReactTableCell = ({
   const { t } = useTranslation("common");
   const handleButtonClick = (action) => {
     showActionForm(action, values);
-    console.log(values);
   };
   return (
     <Fragment>

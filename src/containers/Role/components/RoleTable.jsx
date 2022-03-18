@@ -58,9 +58,7 @@ const RoleTable = (createRoleData) => {
   const showActionForm = async (action, object) => {
     setModel(object);
     setActionModel(action);
-    if (action == 'update') {
-        setOpenModal(true);
-    }
+    setOpenModal(true);
   };
 
   
@@ -106,10 +104,11 @@ const RoleTable = (createRoleData) => {
       <ModalComponent
         isOpen={openModal}
         closeModal={closeModal}
-        title="role_registration"
+        title="update permission"
         form={<PermissionForm 
           action={actionModel} 
           model={model}
+          formTitle={model?.name}
           handleSubmit={handleSubmit}
         />}
         isFooter={false}

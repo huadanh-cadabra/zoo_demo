@@ -277,5 +277,8 @@
     "field":"",
     "general":"General",
     "role list":"役割リスト",
-    "update permission":"更新許可"
+    "permission":"許可",
+    "update permission":"更新許可",
+    "module":"モジュール",
+    "view":"見る"
 }
