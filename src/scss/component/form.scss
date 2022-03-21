@@ -77,6 +77,14 @@
         margin-left: 0;
       }
     }
+    .form__form-group-tag-name{
+      margin-left: 10px;
+      border-radius: 5px;
+      border: 1px solid transparent;
+      color: $color-accent;
+      border-color: $color-accent;
+      padding: 5px 10px;
+    }
 
     .form__form-group-description {
       margin-left: 90px;

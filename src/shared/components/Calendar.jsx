@@ -24,6 +24,7 @@ const CalendarComponent = ({ small, events: propEvents, showDetailEvent }) => {
     setEvents(nextEvents);
   };
   const showEvent = (event) =>{
+    console.log(event);
     showDetailEvent(event);
   }
   const eventStyleGetter = (event) => {
@@ -68,7 +69,7 @@ const CalendarComponent = ({ small, events: propEvents, showDetailEvent }) => {
         timeslots={1}
         showMultiDayTimes
         onEventDrop={moveEvent}
-        onSelectEvent={showEvent}
+        onSelectEvent={e => showEvent(e)}
         defaultDate={new Date(moment().format('MMMM DD YY'))}
         eventPropGetter={eventStyleGetter}
         messages={{

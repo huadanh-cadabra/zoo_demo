@@ -64,7 +64,7 @@ const CreateMemberData = () => {
       data.push({
         id: i,
         first_name: ['ユーザ 名', 'ユーザ 名', 'ユーザ 名'][Math.floor((Math.random() * 3))],
-        last_name: ['ユーザ 名 1', 'Brユーザ 名 2', 'ユーザ 名 3'][Math.floor((Math.random() * 3))],
+        last_name: ['ユーザ 名 1', 'ユーザ 名 2', 'ユーザ 名 3'][Math.floor((Math.random() * 3))],
         email: [`user${i}1@race.jp`, `user${i}2@race.jp`, `user${i}3@race.jp`][Math.floor((Math.random() * 3))],
         username: ['1GX1xsd4Vg1CdcpaDag', '1sadsd4Vg1CdcpaDag', '1FhgfCdsewCdcpaDag'][Math.floor((Math.random() * 3))],
         action:''

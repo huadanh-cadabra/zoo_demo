@@ -60,16 +60,7 @@ const MeetingCalendar = (createMeetingData) => {
     setOpenModal(true);
   };
 
-  const tableConfig = {
-    isEditable,
-    isResizable,
-    isSortable,
-    withDragAndDrop,
-    withPagination: true,
-    withSearchEngine,
-    manualPageSize: [10, 20, 30, 40],
-    placeholder: t("search by zoom account"),
-  };
+ 
 
   return (
     <Col md={12} lg={12} xl={9}>

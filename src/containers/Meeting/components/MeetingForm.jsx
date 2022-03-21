@@ -34,10 +34,11 @@ const MeetingForm = ({ model, action, isAboveError, isHorizontal }) => {
   };
   const { handleSubmit, reset, control, register, errors } = useForm({
     defaultValues: {
-      first_name: model ? model.first_name : "",
-      last_name: model ? model.last_name : "",
+      schedule_for: model ? model.schedule_for : "",
+      agenda: model ? model.agenda : "",
       email: model ? model.email : "",
-      username: model ? model.username : "",
+      duration: model ? model.duration : "",
+      password: model ? model.password : "",
     },
   });
 
@@ -95,12 +96,19 @@ const MeetingForm = ({ model, action, isAboveError, isHorizontal }) => {
                 <TabPane tabId="1">
                   <div className="form__form-group">
                     <span className="form__form-group-label">
-                      {t("first_name")}
-                      <span className="form__label-required">(*)</span>{" "}
+                      {t("meetingId")}
+                    </span>
+                    <div className="form__form-group-field">
+                      <label> {model?.meetingId}</label>
+                    </div>
+                  </div>
+                  <div className="form__form-group">
+                    <span className="form__form-group-label">
+                      {t("schedule_for")}
                     </span>
                     <div className="form__form-group-field">
                       <FormField
-                        name="first_name"
+                        name="schedule_for"
                         control={control}
                         component="input"
                         errors={errors}
@@ -111,12 +119,37 @@ const MeetingForm = ({ model, action, isAboveError, isHorizontal }) => {
                   </div>
                   <div className="form__form-group">
                     <span className="form__form-group-label">
-                      {t("last_name")}
-                      <span className="form__label-required">(*)</span>
+                      {t("registrants")}
+                    </span>
+                    <div className="form__form-group-field">
+                    {model?.registrants.map((registrant) => (
+                    <label className="form__form-group-tag-name" >
+                      {registrant.last_name} {registrant.first_name}
+                    </label>
+                  ))}
+                    </div>
+                  </div>
+                  <div className="form__form-group">
+                    <span className="form__form-group-label">
+                      {t("agenda")}
                     </span>
                     <div className="form__form-group-field">
                       <FormField
-                        name="last_name"
+                        name="agenda"
+                        control={control}
+                        component="input"
+                        errors={errors}
+                        isAboveError={isAboveError}
+                      />
+                    </div>
+                  </div>
+                  <div className="form__form-group">
+                    <span className="form__form-group-label">
+                      {t("duration")}
+                    </span>
+                    <div className="form__form-group-field">
+                      <FormField
+                        name="duration"
                         control={control}
                         component="input"
                         errors={errors}
@@ -127,41 +160,24 @@ const MeetingForm = ({ model, action, isAboveError, isHorizontal }) => {
                   </div>
                   <div className="form__form-group">
                     <span className="form__form-group-label">
-                      {t("email")}{" "}
-                      <span className="form__label-required">(*)</span>
+                      password
                     </span>
                     <div className="form__form-group-field">
                       <FormField
-                        name="email"
-                        control={control}
-                        component="input"
-                        errors={errors}
-                        rules={{
-                          required: t("this is required field"),
-                          pattern: {
-                            value: emailPatter,
-                            message: t(
-                              "entered value does not match email format"
-                            ),
-                          },
-                        }}
-                        isAboveError={isAboveError}
-                      />
-                    </div>
-                  </div>
-                  <div className="form__form-group">
-                    <span className="form__form-group-label">
-                      {t("username")}
-                    </span>
-                    <div className="form__form-group-field">
-                      <FormField
-                        name="username"
+                        name="password"
+                        type={isPasswordShown ? 'text' : 'password'}
                         control={control}
                         component="input"
                         errors={errors}
                         rules={{ required: t("this is required field") }}
                         isAboveError={isAboveError}
                       />
+                       <button
+                  type="button"
+                  className={`form__form-group-button${isPasswordShown ? ' active' : ''}`}
+                  onClick={showPassword}
+                ><EyeIcon />
+                </button>
                     </div>
                   </div>
                 </TabPane>
